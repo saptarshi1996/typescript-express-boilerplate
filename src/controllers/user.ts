@@ -4,12 +4,18 @@ import logger from '../config/logger'
 
 import { getUserFromDB } from '../repository/user'
 
+import type IUser from '../interfaces/models/user'
+
 export const getUser = async (req: Request) => {
-  logger.info(req.user)
+  const { id } = req.user as {
+    id: number
+  }
+
+  logger.info(`id ${id}`)
 
   const user = getUserFromDB({
     where: {
-      id: req.user.id as number
+      id
     },
     select: {
       id: true,
@@ -22,7 +28,9 @@ export const getUser = async (req: Request) => {
       deleted_at: true,
       mobile: true
     }
-  })
+  }) as IUser
+
+  logger.info(user)
 
   return user
 }
