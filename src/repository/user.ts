@@ -52,3 +52,14 @@ export const createUserToDBBulk = async (payload: any[]) => {
 export const deleteUserByIDFromDB = async (id: number) => {
   return await User.delete({ where: { id } })
 }
+
+export const softDeleteUserById = async (id: number) => {
+  return await User.update({
+    where: {
+      id
+    },
+    data: {
+      deleted_at: new Date()
+    }
+  })
+}

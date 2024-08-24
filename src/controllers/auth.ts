@@ -31,7 +31,8 @@ export const userLogin = async (req: Request) => {
 
   const userExists = await getUserFromDB({
     where: {
-      email: loginPayload.email
+      email: loginPayload.email,
+      deleted_at: null
     },
     select: {
       id: true,
@@ -68,7 +69,8 @@ export const userRegister = async (req: Request) => {
 
   const userExists = await getUserFromDB({
     where: {
-      email: registerPayload.email
+      email: registerPayload.email,
+      deleted_at: null
     },
     select: {
       id: true
