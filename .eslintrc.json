@@ -35,6 +35,7 @@
           "snakeCase": false
         }
       }
-    ]
+    ],
+    "@typescript-eslint/no-unused-expressions": "off"
   }
 }

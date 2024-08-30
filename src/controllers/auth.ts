@@ -41,6 +41,8 @@ export const userLogin = async (req: Request) => {
     }
   }) as IUser
 
+  logger.info(userExists)
+
   if (!userExists) {
     throw new NotFoundError('User does not exists.')
   }
@@ -50,11 +52,13 @@ export const userLogin = async (req: Request) => {
   }
 
   const passwordMatch = verifyPassword(loginPayload.password, userExists.password as string)
+  logger.info(passwordMatch)
   if (!passwordMatch) {
-    throw new ForbiddenError('Invalid password.')
+    throw new ForbiddenError('Incorrect password.')
   }
 
   const token = generateToken({ id: userExists.id })
+  logger.info(token)
 
   return { token }
 }
