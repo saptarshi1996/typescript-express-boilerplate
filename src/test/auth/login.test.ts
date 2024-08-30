@@ -18,6 +18,7 @@ describe('POST /auth/login', () => {
       email: 'jdoe@yopmail.com',
       password: '12345'
     })
+
     expect(response.statusCode).toEqual(404)
     expect(response.body).toStrictEqual({
       message: 'User does not exists.'
