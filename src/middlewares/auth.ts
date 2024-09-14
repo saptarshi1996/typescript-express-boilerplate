@@ -33,9 +33,7 @@ export default async function (req: Request, res: Response, next: NextFunction) 
   }) as IUser
 
   if (userExists) {
-    req.user = {
-      id: userExists.id
-    }
+    req.user = { id: userExists.id }
     next()
   } else {
     return res.status(403).json({ message: 'Invalid authorization' })
