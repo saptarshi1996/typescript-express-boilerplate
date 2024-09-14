@@ -36,7 +36,7 @@ model User {
 model UserVerification {
   id Int @id @default(autoincrement())
 
-  otp Int
+  otp String @db.VarChar(255)
 
   is_expired Boolean? @default(false)
   is_revoked Boolean? @default(false)

@@ -1,6 +1,6 @@
 export default interface IUserVerification {
   id?: number
-  otp?: number
+  otp?: string
   is_revoked?: boolean
   is_expired?: boolean
   expired_at?: string
